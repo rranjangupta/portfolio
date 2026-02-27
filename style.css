@@ -44,6 +44,235 @@
 }
 
 /* ========================================
+   LIGHT THEME OVERRIDES
+   ======================================== */
+[data-theme="light"] {
+    --bg-primary: #f5f7fb;
+    --bg-secondary: #eaecf2;
+    --bg-tertiary: #dfe2ea;
+    --bg-card: rgba(255, 255, 255, 0.7);
+
+    --accent-primary: #5b52e0;
+    --accent-secondary: #0099cc;
+    --accent-tertiary: #e05585;
+    --accent-gradient: linear-gradient(135deg, #5b52e0 0%, #0099cc 50%, #e05585 100%);
+    --accent-gradient-soft: linear-gradient(135deg, rgba(91, 82, 224, 0.1), rgba(0, 153, 204, 0.1));
+
+    --text-primary: #1a1e2e;
+    --text-secondary: #4a5068;
+    --text-muted: #7f8598;
+    --text-accent: #5b52e0;
+
+    --glass-bg: rgba(255, 255, 255, 0.65);
+    --glass-border: rgba(91, 82, 224, 0.15);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Light theme — specific overrides */
+[data-theme="light"] #particles-canvas {
+    opacity: 0.35;
+}
+
+[data-theme="light"] .navbar.scrolled {
+    background: rgba(245, 247, 251, 0.88);
+    border-bottom-color: rgba(91, 82, 224, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .hero-bg-image {
+    opacity: 0.12;
+}
+
+[data-theme="light"] .hero::after {
+    background: linear-gradient(transparent, var(--bg-primary));
+}
+
+[data-theme="light"] .section--dark {
+    background: var(--bg-secondary);
+}
+
+[data-theme="light"] .skill-tag {
+    background: rgba(91, 82, 224, 0.06);
+    border-color: rgba(91, 82, 224, 0.18);
+}
+
+[data-theme="light"] .skill-tag[data-level="expert"] {
+    background: rgba(91, 82, 224, 0.1);
+    border-color: rgba(91, 82, 224, 0.35);
+}
+
+[data-theme="light"] .skill-tag[data-level="certified"] {
+    background: rgba(0, 153, 204, 0.08);
+    border-color: rgba(0, 153, 204, 0.3);
+}
+
+[data-theme="light"] .timeline::before {
+    background: linear-gradient(180deg, var(--accent-primary), rgba(91, 82, 224, 0.15));
+}
+
+[data-theme="light"] .timeline-tech span {
+    background: rgba(91, 82, 224, 0.07);
+    border-color: rgba(91, 82, 224, 0.2);
+}
+
+[data-theme="light"] .timeline-badge.current {
+    background: rgba(0, 153, 204, 0.1);
+    border-color: rgba(0, 153, 204, 0.25);
+}
+
+[data-theme="light"] .timeline-badge:not(.current) {
+    background: rgba(91, 82, 224, 0.06);
+    border-color: rgba(91, 82, 224, 0.12);
+}
+
+[data-theme="light"] .project-tags span {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.08);
+    color: var(--text-muted);
+}
+
+[data-theme="light"] .project-badge {
+    background: rgba(255, 193, 7, 0.12);
+    border-color: rgba(255, 193, 7, 0.35);
+    color: #b8860b;
+}
+
+[data-theme="light"] .award-item:hover {
+    border-color: rgba(255, 193, 7, 0.35);
+    box-shadow: 0 8px 30px rgba(255, 193, 7, 0.06);
+}
+
+[data-theme="light"] .award-icon {
+    background: rgba(255, 193, 7, 0.12);
+    border-color: rgba(255, 193, 7, 0.3);
+    color: #d4a017;
+}
+
+[data-theme="light"] .social-icon {
+    border-color: rgba(91, 82, 224, 0.2);
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .social-icon:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background: rgba(91, 82, 224, 0.08);
+}
+
+[data-theme="light"] .project-links a {
+    border-color: rgba(91, 82, 224, 0.2);
+}
+
+[data-theme="light"] .project-links a:hover {
+    border-color: var(--accent-primary);
+    background: rgba(91, 82, 224, 0.08);
+}
+
+[data-theme="light"] .footer {
+    border-top-color: rgba(91, 82, 224, 0.1);
+}
+
+[data-theme="light"] .nav-link:hover {
+    background: rgba(91, 82, 224, 0.06);
+}
+
+[data-theme="light"] .btn-outline {
+    border-color: rgba(91, 82, 224, 0.35);
+}
+
+[data-theme="light"] .btn-outline:hover {
+    border-color: var(--accent-primary);
+    background: rgba(91, 82, 224, 0.06);
+}
+
+[data-theme="light"] .mouse {
+    border-color: rgba(91, 82, 224, 0.35);
+}
+
+[data-theme="light"] ::selection {
+    background: rgba(91, 82, 224, 0.2);
+}
+
+/* Light theme — mobile nav panel */
+@media (max-width: 768px) {
+    [data-theme="light"] .nav-links {
+        background: rgba(245, 247, 251, 0.97);
+        border-left-color: rgba(91, 82, 224, 0.1);
+    }
+}
+
+/* ========================================
+   THEME TOGGLE BUTTON
+   ======================================== */
+.theme-toggle {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(108, 99, 255, 0.1);
+    border: 1.5px solid rgba(108, 99, 255, 0.25);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    overflow: hidden;
+    z-index: 1001;
+}
+
+.theme-toggle:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background: rgba(108, 99, 255, 0.15);
+    transform: rotate(15deg);
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.2);
+}
+
+/* Icon transitions */
+.theme-toggle #theme-icon-moon,
+.theme-toggle #theme-icon-sun {
+    position: absolute;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Default state (dark theme) — show moon, hide sun */
+.theme-toggle #theme-icon-moon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.theme-toggle #theme-icon-sun {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+}
+
+/* Light theme — show sun, hide moon */
+[data-theme="light"] .theme-toggle #theme-icon-moon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+}
+
+[data-theme="light"] .theme-toggle #theme-icon-sun {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+    color: #f59e0b;
+}
+
+[data-theme="light"] .theme-toggle {
+    background: rgba(245, 158, 11, 0.1);
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+[data-theme="light"] .theme-toggle:hover {
+    background: rgba(245, 158, 11, 0.18);
+    border-color: rgba(245, 158, 11, 0.5);
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+}
+
+/* ========================================
    RESET & BASE
    ======================================== */
 *,
@@ -207,6 +436,12 @@ img {
 .nav-link--cta:hover {
     background: #5a52e0 !important;
     transform: translateY(-1px);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .hamburger {

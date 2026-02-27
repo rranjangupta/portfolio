@@ -127,6 +127,54 @@
   });
 })();
 
+// ─── Theme Toggle ──────────────────────────────────────────────
+(function initThemeToggle() {
+  const toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
+
+  const root = document.documentElement;
+
+  // Determine initial theme
+  function getStoredTheme() {
+    return localStorage.getItem('portfolio-theme');
+  }
+
+  function getSystemTheme() {
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  }
+
+  function applyTheme(theme) {
+    if (theme === 'light') {
+      root.setAttribute('data-theme', 'light');
+    } else {
+      root.removeAttribute('data-theme');
+    }
+  }
+
+  // Set initial theme (stored > system > dark)
+  const stored = getStoredTheme();
+  if (stored) {
+    applyTheme(stored);
+  }
+  // If no stored preference, default to dark (current design default)
+
+  // Toggle handler
+  toggle.addEventListener('click', () => {
+    const isCurrentlyLight = root.getAttribute('data-theme') === 'light';
+    const newTheme = isCurrentlyLight ? 'dark' : 'light';
+    applyTheme(newTheme);
+    localStorage.setItem('portfolio-theme', newTheme);
+  });
+
+  // Listen for OS theme changes
+  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+    // Only auto-switch if user hasn't set a preference
+    if (!getStoredTheme()) {
+      applyTheme(e.matches ? 'light' : 'dark');
+    }
+  });
+})();
+
 // ─── Navbar Scroll ──────────────────────────────────────────────
 (function initNavbar() {
   const navbar = document.getElementById('navbar');
@@ -221,7 +269,7 @@
 // ─── Scroll Reveal ──────────────────────────────────────────────
 (function initReveal() {
   const reveals = document.querySelectorAll('.reveal');
-  
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
@@ -257,7 +305,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // ─── Counter Animation for Stats ────────────────────────────────
 (function initCounters() {
   const counters = document.querySelectorAll('.detail-info h4');
-  
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -270,7 +318,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
           let current = 0;
           const duration = 1500;
           const step = end / (duration / 16);
-          
+
           function count() {
             current += step;
             if (current >= end) {
