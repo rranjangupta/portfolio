@@ -1297,7 +1297,7 @@ img {
 }
 
 /* ========================================
-   RESPONSIVE
+   RESPONSIVE — Tablet landscape
    ======================================== */
 @media (max-width: 1024px) {
     .projects-grid {
@@ -1319,7 +1319,7 @@ img {
     .hero-content {
         flex-direction: column;
         text-align: center;
-        gap: 40px;
+        gap: 36px;
     }
 
     .hero-avatar {
@@ -1340,22 +1340,37 @@ img {
     .hero-titles {
         justify-content: center;
     }
+
+    .contact-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
+/* ========================================
+   RESPONSIVE — Tablet portrait & small devices
+   ======================================== */
 @media (max-width: 768px) {
     :root {
-        --section-padding: 80px 0;
+        --section-padding: 72px 0;
     }
 
+    /* Hide custom cursor on touch devices */
     body {
         cursor: auto;
     }
 
-    .cursor,
-    .cursor-follower {
-        display: none;
+    a,
+    .btn,
+    button {
+        cursor: pointer;
     }
 
+    .cursor,
+    .cursor-follower {
+        display: none !important;
+    }
+
+    /* ── Navbar mobile ── */
     .hamburger {
         display: flex;
     }
@@ -1364,16 +1379,21 @@ img {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 280px;
+        width: min(300px, 80vw);
         height: 100vh;
+        height: 100dvh;
         background: rgba(10, 14, 26, 0.97);
-        backdrop-filter: blur(20px);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
         flex-direction: column;
-        align-items: flex-start;
-        padding: 100px 32px 32px;
+        align-items: stretch;
+        padding: 100px 28px 40px;
         gap: 4px;
         transition: right var(--transition-slow);
-        border-left: 1px solid rgba(108, 99, 255, 0.1);
+        border-left: 1px solid rgba(108, 99, 255, 0.12);
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+        overflow-y: auto;
+        z-index: 1000;
     }
 
     .nav-links.open {
@@ -1381,76 +1401,580 @@ img {
     }
 
     .nav-link {
-        font-size: 1rem;
+        font-size: 1.05rem;
         width: 100%;
+        padding: 12px 16px;
     }
 
     .nav-link--cta {
         margin-left: 0;
-        margin-top: 12px;
+        margin-top: 16px;
         text-align: center;
+        display: flex;
         justify-content: center;
     }
 
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
+    /* ── Hero mobile ── */
+    .hero {
+        padding: 90px 20px 60px;
+        min-height: 100vh;
+        min-height: 100dvh;
     }
 
-    .skills-grid {
-        grid-template-columns: 1fr;
+    .hero-content {
+        gap: 28px;
     }
 
-    .projects-grid {
-        grid-template-columns: 1fr;
+    .hero-avatar-wrapper {
+        order: -1;
     }
 
-    .awards-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .certs-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .contact-cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .section-title {
-        margin-bottom: 40px;
-    }
-}
-
-@media (max-width: 480px) {
     .hero-avatar {
-        width: 160px;
-        height: 160px;
+        width: 180px;
+        height: 180px;
     }
 
-    .hero-name {
-        font-size: 2rem;
+    .avatar-glow {
+        inset: -15px;
+    }
+
+    .avatar-ring {
+        inset: -8px;
+    }
+
+    .hero-greeting {
+        font-size: 0.9rem;
+    }
+
+    .hero-titles {
+        font-size: 1.1rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 28px;
+        line-height: 1.75;
     }
 
     .hero-cta {
-        flex-direction: column;
-        align-items: center;
+        gap: 12px;
+        margin-bottom: 32px;
+    }
+
+    .hero-socials {
+        gap: 12px;
+    }
+
+    .social-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    /* Hide scroll indicator on mobile to prevent overlap */
+    .scroll-indicator {
+        display: none;
+    }
+
+    /* ── Section common ── */
+    .container {
+        padding: 0 20px;
+    }
+
+    .section-title {
+        margin-bottom: 36px;
+        font-size: clamp(1.5rem, 5vw, 2rem);
+        gap: 12px;
+    }
+
+    .section-title::after {
+        max-width: 120px;
+    }
+
+    .section-number {
+        font-size: 0.9rem;
+    }
+
+    /* ── About ── */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .about-text p {
+        font-size: 0.98rem;
+        line-height: 1.8;
     }
 
     .about-details {
         grid-template-columns: 1fr 1fr;
+        gap: 16px;
     }
 
-    .contact-cards {
+    .detail-card {
+        padding: 20px;
+        gap: 12px;
+    }
+
+    .detail-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+    }
+
+    .detail-info h4 {
+        font-size: 1.5rem;
+    }
+
+    .detail-info p {
+        font-size: 0.8rem;
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
 
+    .skill-category {
+        padding: 24px;
+    }
+
+    .skill-tag {
+        padding: 6px 14px;
+        font-size: 0.82rem;
+    }
+
+    /* ── Timeline / Experience ── */
+    .timeline {
+        padding-left: 32px;
+    }
+
+    .timeline::before {
+        left: 8px;
+    }
+
+    .timeline-marker {
+        left: -32px;
+    }
+
+    .timeline-dot {
+        width: 20px;
+        height: 20px;
+    }
+
+    .timeline-content {
+        padding: 24px;
+    }
+
+    .timeline-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .timeline-header h3 {
+        font-size: 1.15rem;
+    }
+
+    .timeline-badge {
+        font-size: 0.75rem;
+        align-self: flex-start;
+    }
+
+    .timeline-responsibilities li {
+        font-size: 0.9rem;
+        padding-left: 20px;
+    }
+
+    .timeline-tech span {
+        font-size: 0.75rem;
+        padding: 3px 12px;
+    }
+
+    /* ── Projects ── */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .project-card {
+        padding: 24px;
+    }
+
+    .project-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.2rem;
+        margin-bottom: 16px;
+    }
+
+    .project-content h3 {
+        font-size: 1.08rem;
+    }
+
+    .project-content p {
+        font-size: 0.88rem;
+    }
+
+    /* ── Awards ── */
+    .awards-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .award-item {
+        padding: 24px;
+        gap: 16px;
+    }
+
+    .award-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+
+    .award-info h4 {
+        font-size: 0.98rem;
+    }
+
+    .award-info p {
+        font-size: 0.85rem;
+    }
+
+    /* ── Certifications ── */
+    .certs-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .cert-card {
+        padding: 24px 16px;
+    }
+
+    .cert-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.2rem;
+    }
+
+    .cert-card h4 {
+        font-size: 0.88rem;
+    }
+
+    .cert-card p {
+        font-size: 0.78rem;
+    }
+
+    /* ── Contact ── */
+    .contact-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .contact-card {
+        padding: 24px 16px;
+    }
+
+    .contact-card i {
+        font-size: 1.4rem;
+    }
+
+    .contact-desc {
+        font-size: 1rem;
+        margin-bottom: 36px;
+    }
+
+    .btn-lg {
+        padding: 16px 36px;
+        font-size: 1rem;
+    }
+
+    /* ── Glass card hover — disable transform on touch ── */
+    .glass-card:hover {
+        transform: none;
+    }
+
+    /* ── Footer ── */
+    .footer {
+        padding: 32px 0;
+    }
+
+    .footer p {
+        font-size: 0.82rem;
+    }
+}
+
+/* ========================================
+   RESPONSIVE — Mobile
+   ======================================== */
+@media (max-width: 480px) {
+    :root {
+        --section-padding: 60px 0;
+    }
+
+    .hero {
+        padding: 80px 16px 40px;
+    }
+
+    .hero-avatar {
+        width: 140px;
+        height: 140px;
+    }
+
+    .hero-name {
+        font-size: clamp(1.8rem, 8vw, 2.2rem);
+    }
+
+    .hero-titles {
+        font-size: 1rem;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .hero-title-static {
+        display: block;
+    }
+
+    .hero-description {
+        font-size: 0.92rem;
+        margin-bottom: 24px;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .hero-cta .btn {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .hero-socials {
+        justify-content: center;
+    }
+
+    /* About */
+    .about-details {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .detail-card {
+        padding: 16px;
+        gap: 10px;
+    }
+
+    .detail-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 0.95rem;
+    }
+
+    .detail-info h4 {
+        font-size: 1.3rem;
+    }
+
+    /* Skills */
+    .skill-category {
+        padding: 20px;
+    }
+
+    .skill-category-header h3 {
+        font-size: 1rem;
+    }
+
+    .skill-tag {
+        padding: 5px 12px;
+        font-size: 0.78rem;
+    }
+
+    /* Timeline */
+    .timeline {
+        padding-left: 28px;
+    }
+
+    .timeline::before {
+        left: 6px;
+    }
+
+    .timeline-marker {
+        left: -28px;
+    }
+
+    .timeline-dot {
+        width: 18px;
+        height: 18px;
+    }
+
+    .timeline-content {
+        padding: 20px;
+    }
+
+    .timeline-header h3 {
+        font-size: 1.05rem;
+    }
+
+    .timeline-company {
+        font-size: 0.9rem;
+    }
+
+    .timeline-item {
+        margin-bottom: 28px;
+    }
+
+    /* Projects */
+    .project-card {
+        padding: 20px;
+    }
+
+    /* Certifications */
     .certs-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Contact */
+    .contact-cards {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .contact-desc {
+        font-size: 0.92rem;
+        margin-bottom: 28px;
     }
 
     .btn {
         padding: 12px 24px;
         font-size: 0.9rem;
+    }
+
+    .btn-lg {
+        padding: 14px 32px;
+        font-size: 0.95rem;
+    }
+
+    /* Section title */
+    .section-title {
+        margin-bottom: 28px;
+    }
+
+    .section-title::after {
+        max-width: 80px;
+    }
+
+    /* Container */
+    .container {
+        padding: 0 16px;
+    }
+}
+
+/* ========================================
+   RESPONSIVE — Ultra-narrow (320px)
+   ======================================== */
+@media (max-width: 360px) {
+    .hero-avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .hero-name {
+        font-size: 1.6rem;
+    }
+
+    .hero-titles {
+        font-size: 0.9rem;
+    }
+
+    .hero-description {
+        font-size: 0.85rem;
+    }
+
+    .about-details {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-card {
+        justify-content: center;
+    }
+
+    .nav-links {
+        width: 100vw;
+    }
+
+    .timeline {
+        padding-left: 24px;
+    }
+
+    .timeline::before {
+        left: 4px;
+    }
+
+    .timeline-marker {
+        left: -24px;
+    }
+
+    .timeline-dot {
+        width: 16px;
+        height: 16px;
+    }
+
+    .timeline-content {
+        padding: 16px;
+    }
+
+    .award-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+    }
+}
+
+/* ========================================
+   TOUCH DEVICE ENHANCEMENTS
+   ======================================== */
+@media (hover: none) and (pointer: coarse) {
+
+    /* Disable custom cursor on all touch devices */
+    body {
+        cursor: auto;
+    }
+
+    a,
+    button,
+    .btn {
+        cursor: pointer;
+    }
+
+    .cursor,
+    .cursor-follower {
+        display: none !important;
+    }
+
+    /* Disable hover transform effects that feel janky on mobile */
+    .glass-card:hover,
+    .detail-card:hover,
+    .award-item:hover,
+    .skill-tag:hover,
+    .social-icon:hover,
+    .project-links a:hover {
+        transform: none;
+    }
+
+    /* Ensure comfortable touch targets (min 44px) */
+    .nav-link {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .btn {
+        min-height: 48px;
+    }
+
+    .social-icon {
+        min-width: 44px;
+        min-height: 44px;
     }
 }
