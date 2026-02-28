@@ -337,3 +337,66 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
   counters.forEach(c => observer.observe(c));
 })();
+
+// ─── Image Carousel ────────────────────────────────────────────
+(function initCarousel() {
+  const track = document.getElementById('carousel-track');
+  const dots  = document.querySelectorAll('.carousel-dot');
+  const prev  = document.getElementById('carousel-prev');
+  const next  = document.getElementById('carousel-next');
+  if (!track) return;
+
+  const total = document.querySelectorAll('.carousel-slide').length;
+  let current = 0;
+  let autoTimer = null;
+  let startX = null;
+
+  function goTo(index) {
+    current = (index + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function startAuto() {
+    autoTimer = setInterval(() => goTo(current + 1), 4000);
+  }
+  function stopAuto() {
+    clearInterval(autoTimer);
+  }
+
+  prev.addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
+  next.addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      stopAuto();
+      goTo(Number(dot.dataset.index));
+      startAuto();
+    });
+  });
+
+  // Pause on hover
+  const wrapper = document.querySelector('.carousel-wrapper');
+  if (wrapper) {
+    wrapper.addEventListener('mouseenter', stopAuto);
+    wrapper.addEventListener('mouseleave', startAuto);
+  }
+
+  // Swipe / touch support
+  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    if (startX === null) return;
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) { stopAuto(); goTo(current + (diff > 0 ? 1 : -1)); startAuto(); }
+    startX = null;
+  }, { passive: true });
+
+  // Keyboard support
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  { stopAuto(); goTo(current - 1); startAuto(); }
+    if (e.key === 'ArrowRight') { stopAuto(); goTo(current + 1); startAuto(); }
+  });
+
+  goTo(0);
+  startAuto();
+})();

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d0a00"/>
+      <stop offset="100%" style="stop-color:#1a1200"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700"/>
+      <stop offset="100%" style="stop-color:#ff8c00"/>
+    </linearGradient>
+    <filter id="glow4">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="900" height="500" fill="url(#g4)"/>
+  <!-- Stars background -->
+  <circle cx="100" cy="80" r="1.5" fill="rgba(255,215,0,0.4)"/>
+  <circle cx="250" cy="40" r="1" fill="rgba(255,215,0,0.3)"/>
+  <circle cx="500" cy="60" r="2" fill="rgba(255,215,0,0.5)"/>
+  <circle cx="750" cy="90" r="1.5" fill="rgba(255,215,0,0.4)"/>
+  <circle cx="850" cy="50" r="1" fill="rgba(255,215,0,0.3)"/>
+  <circle cx="170" cy="150" r="1" fill="rgba(255,215,0,0.25)"/>
+  <circle cx="680" cy="130" r="1.5" fill="rgba(255,215,0,0.35)"/>
+
+  <text x="450" y="68" font-family="Inter, sans-serif" font-size="28" font-weight="800" fill="url(#gold)" text-anchor="middle">Awards &amp; Achievements</text>
+
+  <!-- Award items -->
+  <rect x="60" y="95" width="380" height="68" rx="12" fill="rgba(255,215,0,0.07)" stroke="rgba(255,215,0,0.2)" stroke-width="1"/>
+  <text x="88" y="120" font-family="Inter, sans-serif" font-size="20" fill="#ffd700">★</text>
+  <text x="115" y="122" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="rgba(255,255,255,0.9)">OpenText Excellence Award 2026</text>
+  <text x="115" y="145" font-family="Inter, sans-serif" font-size="11" fill="rgba(255,255,255,0.45)">ACMS Pipeline Automation Leadership</text>
+
+  <rect x="460" y="95" width="380" height="68" rx="12" fill="rgba(255,215,0,0.07)" stroke="rgba(255,215,0,0.2)" stroke-width="1"/>
+  <text x="488" y="120" font-family="Inter, sans-serif" font-size="20" fill="#ffd700">★</text>
+  <text x="515" y="122" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="rgba(255,255,255,0.9)">Sankalp Solar Hackathon 2019</text>
+  <text x="515" y="145" font-family="Inter, sans-serif" font-size="11" fill="rgba(255,255,255,0.45)">National 1st Place Winner</text>
+
+  <rect x="60" y="180" width="380" height="68" rx="12" fill="rgba(255,215,0,0.07)" stroke="rgba(255,215,0,0.2)" stroke-width="1"/>
+  <text x="88" y="205" font-family="Inter, sans-serif" font-size="20" fill="#ffd700">★</text>
+  <text x="115" y="207" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="rgba(255,255,255,0.9)">Best B.Tech Project</text>
+  <text x="115" y="230" font-family="Inter, sans-serif" font-size="11" fill="rgba(255,255,255,0.45)">Ranked #1 among 500 projects · NIST University</text>
+
+  <rect x="460" y="180" width="380" height="68" rx="12" fill="rgba(255,215,0,0.07)" stroke="rgba(255,215,0,0.2)" stroke-width="1"/>
+  <text x="488" y="205" font-family="Inter, sans-serif" font-size="20" fill="#ffd700">★</text>
+  <text x="515" y="207" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="rgba(255,255,255,0.9)">IIT Bhubaneswar — 1st Place</text>
+  <text x="515" y="230" font-family="Inter, sans-serif" font-size="11" fill="rgba(255,255,255,0.45)">Bomb Squad Robotics Challenge</text>
+
+  <rect x="60" y="265" width="380" height="68" rx="12" fill="rgba(255,215,0,0.07)" stroke="rgba(255,215,0,0.2)" stroke-width="1"/>
+  <text x="88" y="290" font-family="Inter, sans-serif" font-size="20" fill="#ffd700">★</text>
+  <text x="115" y="292" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="rgba(255,255,255,0.9)">IIT Mumbai — South Regional Winner</text>
+  <text x="115" y="315" font-family="Inter, sans-serif" font-size="11" fill="rgba(255,255,255,0.45)">Technical Competition Winner</text>
+
+  <rect x="460" y="265" width="380" height="68" rx="12" fill="rgba(255,215,0,0.07)" stroke="rgba(255,215,0,0.2)" stroke-width="1"/>
+  <text x="488" y="290" font-family="Inter, sans-serif" font-size="20" fill="#ffd700">★</text>
+  <text x="515" y="292" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="rgba(255,255,255,0.9)">Application Health Champion</text>
+  <text x="515" y="315" font-family="Inter, sans-serif" font-size="11" fill="rgba(255,255,255,0.45)">JPMC Fees Global India</text>
+
+  <!-- Bottom tagline -->
+  <text x="450" y="400" font-family="Inter, sans-serif" font-size="15" fill="rgba(255,215,0,0.5)" text-anchor="middle">Consistent Excellence Across Every Role</text>
+  <line x1="200" y1="415" x2="700" y2="415" stroke="rgba(255,215,0,0.15)" stroke-width="1"/>
+</svg>
